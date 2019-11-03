@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Mahasiswa_New.Models.MahasiswaModel>
+    @{ 
+        ViewBag.Title = "";
+        var no = 0;
+    }
+<hr/>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <p>
+                    @Html.ActionLink("Create New", "Create", null, new {@class = "btn btn-primary", @Style = "width:100px"})
+                </p>
+                <hr/>
+                <table id="TbMahasiswa" class="table table-bordered table-condensed table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th style="width:10px; text-align:center;">No</th>
+                            <th style="width:100px; text-align:center;">Action</th>
+                            <th style="text-align:center">NPM</th>
+                            <th style="text-align:center">Nama</th>
+                            <th style="text-align:center">JK</th>
+                            <th style="text-align:center">Jurusan</th>
+                            <th style="text-align:center">Alamat</th>
+                            <th style="text-align:center">Tgl Lahir</th>
+                            <th style="text-align:center">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var buku in Model)
+                        {
+                            no++;
+                            <tr>
+                                <td style="text-align:center">@no</td>
+                                <td>
+                                    @Html.ActionLink(" ","Edit", new { id = buku.NPM}, new { @class= "btn btn-xs btn-primary fa fa-pencil"})
+                                    @Html.ActionLink(" ", "Detail", new { id = buku.NPM }, new { @class = "btn btn-xs btn-success fa fa-eye" })
+                                    @Html.ActionLink(" ", "Delete", new { id = buku.NPM }, new { @class = "btn btn-xs btn-danger fa fa-trash" })
+                                </td>
+                                <td>@buku.NPM</td>
+                                <td>@buku.Nama</td>
+                                <td>@buku.JK</td>
+                                <td>@buku.Jurusan</td>
+                                <td>@buku.Alamat</td>
+                                <td>@buku.TglLahir</td>
+                                <td>@buku.Email</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function (){
+        
+            $('#TbMahasiswa').DataTable();
+        });
+    </script>
+    }
