@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Mahasiswa_New1
+namespace Mahasiswa_New
 {
     public class BundleConfig
     {
